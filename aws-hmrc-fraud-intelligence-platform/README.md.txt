@@ -45,7 +45,7 @@ Browser Request
 
 Fraud Detection API:
 
-http://YOUR-EC2-IP:5000/fraud-check
+http://54.226.227.215:5000/fraud-check
 
 ---
 
