@@ -1,117 +1,121 @@
 Architecture Diagram
 ![image alt](https://github.com/teajo99/aws-hmrc-fraud-intelligence-platform/blob/ffa287577216672c54730955b8ae599b02b90565/aws-hmrc-fraud-intelligence-platform/Architecture%20Diagram.png)
 
-# Tax Fraud Monitoring Platform (AWS EC2 + Linux + Flask + NGINX)
+# Cloud-Based Fraud Intelligence System (AWS EC2 + Flask + NGINX)
+Overview
 
-## Overview
+This project is a cloud-based fraud intelligence and monitoring system built on Amazon EC2, designed to simulate a scalable backend service for real-time risk evaluation and alerting.
 
-This project is a cloud-based fraud intelligence and monitoring system deployed on AWS EC2 using Linux, Flask, and NGINX.
+The system demonstrates a 3-layer web architecture using a reverse proxy (NGINX), a Python-based API service (Flask), and a frontend dashboard, deployed in a Linux-based AWS environment.
 
-It simulates a government-grade HMRC tax fraud detection platform that processes fraud risk data through a backend API and displays a real-time monitoring dashboard.
+# It focuses on core cloud engineering concepts such as:
 
----
+server deployment
+network routing
+API design
+system debugging and troubleshooting
 
-## Architecture
+# Architecture
+System Flow
 
-Browser Request
-→ NGINX Web Server (Port 80)
-→ Static Dashboard (HTML)
-→ Flask Fraud Detection API (Port 5000)
+User Request → NGINX Reverse Proxy → Flask API Service → Fraud Risk Engine → JSON Response → Dashboard UI
 
----
+# High-Level Design
+Web traffic is handled by NGINX acting as a reverse proxy
+Requests are forwarded to a Flask API running on EC2
+The API processes fraud risk logic and returns structured responses
+A static dashboard displays real-time results
 
-## Technologies Used
+# Cloud Infrastructure
+Amazon EC2 → Application hosting (Linux server environment)
+Amazon VPC → Network isolation and security boundary
+Security Groups → Controlled access to HTTP (80) and API (5000) ports
 
-- AWS EC2
-- Linux (Amazon Linux)
-- Python 3
-- Flask
-- NGINX
-- HTML/CSS
-- SSH
+# Technologies Used
+AWS EC2 (Linux / Amazon Linux)
+Python 3
+Flask (REST API backend)
+NGINX (Reverse proxy web server)
+HTML / CSS (Frontend dashboard)
+SSH (remote server management)
 
----
+# Key Features
+REST API for fraud risk evaluation
+Rule-based fraud detection logic simulation
+Real-time dashboard UI
+Reverse proxy architecture using NGINX
+Linux-based cloud deployment on AWS EC2
+Manual debugging and system troubleshooting
+Secure port and access configuration via security groups
 
-## Features
-
-- Fraud detection API endpoint
-- Risk scoring simulation
-- Real-time styled dashboard UI
-- Linux server deployment
-- NGINX web hosting
-- AWS EC2 cloud infrastructure
-- Manual troubleshooting and debugging
-
----
-
-## API Endpoint
-
-Fraud Detection API:
-
+# API Endpoint
+Fraud Detection API
 http://54.226.227.215:5000/fraud-check
-
----
-
-## Example Response
-
+Example Response
 {
   "status": "FRAUD DETECTED",
   "reason": "High income anomaly",
   "riskScore": 95
 }
 
----
+# Deployment Architecture
+Launch EC2 instance in AWS
+Configure Linux environment (Python, dependencies)
+Deploy Flask API on port 5000
+Install and configure NGINX
+Route traffic from port 80 → Flask service
+Deploy frontend dashboard to NGINX web root
+Configure security groups for controlled access
 
-## Deployment Steps Summary
+# System Design Decisions
+Flask was used for lightweight and fast API development
+NGINX was used as a reverse proxy to separate web serving and backend logic
+EC2 provides full control over OS-level configuration and deployment
+Port separation (80/5000) simulates real-world service isolation
+Stateless API design allows future scalability improvements
 
-1. Launch AWS EC2 instance
-2. Connect via SSH
-3. Install Python & Flask
-4. Run Flask API on port 5000
-5. Install and start NGINX
-6. Deploy HTML dashboard to /usr/share/nginx/html
-7. Open Security Group ports (80, 5000)
+# Key Skills Demonstrated
+Cloud infrastructure deployment on AWS
+Linux server administration and SSH management
+Web server configuration (NGINX reverse proxy)
+REST API development using Flask
+Networking fundamentals (ports, routing, security groups)
+Debugging real deployment issues in cloud environments
+End-to-end application deployment workflow
 
----
+# Challenges & Solutions
+Configured AWS security groups to allow controlled HTTP/API access
+Resolved NGINX installation and service configuration issues
+Debugged Flask service binding and port exposure problems
+Verified system connectivity between NGINX and backend API
+Handled Linux-level service management and troubleshooting
 
-## Key Skills Demonstrated
+# Screenshots
+EC2 Instance Running
 
-- Cloud infrastructure (AWS EC2)
-- Linux server administration
-- Web server configuration (NGINX)
-- Backend API development (Flask)
-- Networking and security groups
-- Real-world troubleshooting
-- Deployment workflow understanding
+./screenshots/ec2-running.png
 
----
+Flask API Response
 
-## Challenges & Troubleshooting
+./screenshots/flask-api.png
 
-- Configured AWS security group rules for HTTP and API access
-- Resolved NGINX installation and service startup issues
-- Debugged Flask API connectivity and port exposure
-- Verified Linux service status and network routing
+Web Dashboard UI
 
----
+./screenshots/website.png
 
-## Screenshots
+# Future Improvements
+Infrastructure Enhancements
+Integrate Amazon RDS for persistent fraud logs
+Implement auto-scaling using EC2 Auto Scaling Groups
+Add load balancing for distributed traffic handling
+DevOps Improvements
+CI/CD pipeline using GitHub Actions
+Infrastructure as Code using Terraform
+Automated deployment pipeline
+Observability
+CloudWatch logging and monitoring
+Centralized application logging
 
-### EC2 Instance Running
-(./screenshots/ec2-running.png)
+# Summary
 
-### Flask API Working
-(./screenshots/flask-api.png)
-
-### Website Dashboard
-(./screenshots/website.png)
-
----
-
-## Future Improvements
-
-- Connect Flask API to NGINX reverse proxy
-- Add DynamoDB for storing fraud logs
-- Integrate AWS Lambda fraud detection engine
-- Automate deployment using Terraform
-- Add CI/CD pipeline using GitHub Actions
+This project demonstrates a cloud-deployed, multi-layer web application architecture using AWS EC2, NGINX, and Flask. It highlights practical experience in deploying, configuring, and debugging real server environments while following cloud engineering best practices.
